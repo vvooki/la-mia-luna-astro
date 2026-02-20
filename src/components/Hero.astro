@@ -1,0 +1,59 @@
+---
+import HeadingTwo from './typography/HeadingTwo.astro';
+import HeadingThree from './typography/HeadingThree.astro';
+
+const dogs = [
+  {
+    name: 'Monday',
+    image:
+      'https://images.unsplash.com/photo-1583675478703-04f728bf7d2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYWdvdHRvJTIwcm9tYWdub2xvJTIwZG9nfGVufDF8fHx8MTc2MzkyMjEyNnww&ixlib=rb-4.1.0&q=80&w=1080',
+    description: 'Zapatrzony w człowieka pies, który uwielbia psocić i oczywiście kopać 😊',
+    link: '/pl/monday',
+  },
+  {
+    name: 'Mina',
+    image:
+      'https://images.unsplash.com/photo-1706300386721-ba374c39fb0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYWdvdHRvJTIwcm9tYWdub2xvJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzYzOTIyMTI3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    description:
+      "Cudowna i uśmiechnięta przez cały czas sunia. Przyjaciółka Monday'a, która jest Włoszką.",
+    link: '/pl/mina',
+  },
+];
+---
+
+{/* Hero Section */}
+<section class="mb-16 text-center">
+  <div class="mx-auto max-w-4xl">
+    <HeadingTwo title="Witamy w naszej hodowli" />
+    <p class="mx-auto mb-8 max-w-3xl text-orange-800">
+      Jesteśmy małą domową hodowlą. Nasza przygoda zaczęła się od znalezienia rasy, w której się
+      zakochaliśmy. Postanowiliśmy dołączyć do grona szczęśliwych posiadaczy psiaka rasy lagotto.
+    </p>
+  </div>
+
+  {/* Main Dogs Grid */}
+  <div class="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
+    {
+      dogs.map((dog) => (
+        <a href={dog.link} class="group">
+          <div class="h-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src={dog.image}
+                alt="Monday z Ustrońskiego Zakątka"
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
+            <div class="h-full p-6">
+              <HeadingThree title={dog.name} />
+              <p class="text-orange-700">{dog.description}</p>
+              <div class="mt-4 inline-block rounded-full bg-orange-100 px-4 py-2 text-orange-900">
+                Poznaj {dog.name} →
+              </div>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,72 @@
+---
+import { Heart, Award, Compass, Users } from "@lucide/astro";
+---
+
+{/* About Section */}
+<section
+    class="mb-16 bg-white rounded-3xl p-8 md:p-12 shadow-lg max-w-5xl mx-auto"
+>
+    <h3 class="text-orange-900 mb-8 text-center">Nasza Filozofia</h3>
+
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="flex gap-4">
+            <div
+                class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-900"
+            >
+                <Heart size={24} />
+            </div>
+            <div>
+                <h4 class="text-orange-900 mb-2">Pasja i Miłość</h4>
+                <p class="text-orange-700">
+                    Zakochaliśmy się w rasie lagotto i postanowiliśmy związać z
+                    nią nasze życie. Każdy pies jest dla nas członkiem rodziny.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex gap-4">
+            <div
+                class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-900"
+            >
+                <Award size={24} />
+            </div>
+            <div>
+                <h4 class="text-orange-900 mb-2">Wystawy i Osiągnięcia</h4>
+                <p class="text-orange-700">
+                    Prezentujemy nasze psy na wystawach, zdobywając cenne
+                    doświadczenie i uznanie w środowisku kynologicznym.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex gap-4">
+            <div
+                class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-900"
+            >
+                <Compass size={24} />
+            </div>
+            <div>
+                <h4 class="text-orange-900 mb-2">Podróże i Przygody</h4>
+                <p class="text-orange-700">
+                    Uwielbiamy podróżować z naszymi psiakami, które towarzyszą
+                    nam w każdej przygodzie.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex gap-4">
+            <div
+                class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-900"
+            >
+                <Users size={24} />
+            </div>
+            <div>
+                <h4 class="text-orange-900 mb-2">Socjalizacja</h4>
+                <p class="text-orange-700">
+                    Bardzo dużą wagę przywiązujemy do socjalizacji. Nasze psy
+                    uczestniczą w zajęciach posłuszeństwa i handlingu.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

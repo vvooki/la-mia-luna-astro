@@ -1,0 +1,23 @@
+---
+import '../../styles/global.css';
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Goals from '../../components/Goals.astro';
+import PuppyInterestCTA from '../../components/PuppyInterestCTA.astro';
+import Contact from '../../components/Contact.astro';
+import Welcome from '@/components/Welcome.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'pl' } }, { params: { lang: 'en' } }];
+}
+---
+
+<Layout title="La Mia Luna FCI - Hodowla Lagotto Romagnolo">
+  <div>
+    <Welcome />
+    <Hero />
+    <Goals />
+    <PuppyInterestCTA />
+    <Contact />
+  </div>
+</Layout>

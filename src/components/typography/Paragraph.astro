@@ -1,0 +1,9 @@
+---
+// Odbieramy 'class' (standardowy atrybut HTML) i zmieniamy nazwę na 'className'
+// Dajemy też wartość domyślną = "", żeby kod nie wybuchł, jak ktoś nie poda klasy.
+const { text, class: className = "" } = Astro.props;
+---
+
+<p class:list={["text-base", className]}>
+    {text}
+</p>

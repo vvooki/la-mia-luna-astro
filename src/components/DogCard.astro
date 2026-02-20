@@ -1,0 +1,67 @@
+---
+import { Heart, Medal } from 'lucide-react';
+import ImageWithFallback from './ImageWithFallback.astro';
+import HeadingTwo from './typography/HeadingTwo.astro';
+
+interface Props {
+  name: string;
+  image: string;
+  description: string;
+  characteristics: string;
+  achievements: string;
+}
+
+const { name, image, description, characteristics, achievements } = Astro.props;
+---
+
+<section class="mb-16">
+  <div class="mx-auto max-w-6xl">
+    <div
+      class="grid items-center gap-8 overflow-hidden rounded-3xl bg-white shadow-xl md:grid-cols-2"
+    >
+      <div class="h-full w-full">
+        <ImageWithFallback
+          src={image}
+          alt="Monday z Ustrońskiego Zakątka"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div class="p-8 md:p-12">
+        <HeadingTwo title={name} />
+        <div class="space-y-4 text-orange-700">
+          <div class="flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 min-w-10 items-center justify-center rounded-full bg-orange-100"
+            >
+              <Heart className="text-orange-900" size={20} />
+            </div>
+            <div>
+              <p class="font-semibold text-orange-900">Charakter</p>
+              <p>
+                {characteristics}
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 min-w-10 items-center justify-center rounded-full bg-orange-100"
+            >
+              <Medal className="text-orange-900" size={20} />
+            </div>
+            <div>
+              <p class="font-semibold text-orange-900">Osiągnięcia wystawowe</p>
+              <p>
+                {achievements}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 rounded-xl bg-orange-50 p-4">
+          <p class="text-orange-800 italic">
+            {description}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

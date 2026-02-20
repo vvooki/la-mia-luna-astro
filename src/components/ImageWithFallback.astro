@@ -1,0 +1,20 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+}
+
+const { src, alt, class: className } = Astro.props;
+
+const fallbackSrc = 'https://via.placeholder.com/400?text=Brak+zdjęcia';
+---
+
+<img 
+  src={src} 
+  alt={alt} 
+  class={className} 
+  loading="lazy" 
+  decoding="async"
+  onerror="this.src='{fallbackSrc}'" 
+/>

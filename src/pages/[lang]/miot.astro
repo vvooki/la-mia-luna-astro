@@ -1,0 +1,78 @@
+---
+import '../../styles/global.css';
+import PuppyCard from '@/components/PuppyCard.astro';
+import Layout from '@/layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'pl' } }, { params: { lang: 'en' } }];
+}
+
+const offspring: {
+  name: string;
+  birthDate: string;
+  description: string;
+  imageUrl: string;
+  gender: 'male' | 'female';
+}[] = [
+  {
+    name: 'Alex',
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl: '/images/puppies/alex.webp',
+    gender: 'male',
+  },
+  {
+    name: 'Bella',
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl: '/images/puppies/bella.webp',
+    gender: 'female',
+  },
+  {
+    name: 'Alex',
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl: '/images/puppies/alex.webp',
+    gender: 'male',
+  },
+  {
+    name: 'Bella',
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl: '/images/puppies/bella.webp',
+    gender: 'female',
+  },
+  {
+    name: 'Alex',
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl: '/images/puppies/alex.webp',
+    gender: 'male',
+  },
+  {
+    name: 'Bella',
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl: '/images/puppies/bella.webp',
+    gender: 'female',
+  },
+];
+---
+
+<Layout title="La Mia Luna FCI - Miot">
+  <div class="flex w-full flex-wrap justify-center gap-4">
+    {
+      offspring.map((pup) => (
+        <div class="max-w-[300px]">
+          <PuppyCard {...pup} />
+        </div>
+      ))
+    }
+  </div>
+</Layout>

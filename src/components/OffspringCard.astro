@@ -1,0 +1,33 @@
+---
+import ImageWithFallback from './ImageWithFallback.astro';
+
+interface Props {
+  fatherName: string;
+  motherName: string;
+  birthDate: string;
+  description: string;
+  imageUrl: string;
+}
+
+const { fatherName, motherName, birthDate, description, imageUrl } = Astro.props;
+---
+
+<div
+  class="overflow-hidden rounded-xl bg-white shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
+>
+  <div class="aspect-square overflow-hidden">
+    <ImageWithFallback
+      src={imageUrl}
+      alt={description}
+      class="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
+    />
+  </div>
+  <div class="p-5">
+    <p class="mb-2 inline-block rounded-md bg-orange-100 px-2 py-1 text-xs text-orange-900">
+      Urodzone: {birthDate}
+    </p>
+    <p class="mb-1 text-orange-900"><strong>Pies:</strong> {fatherName}</p>
+    <p class="mb-2 text-orange-900"><strong>Suka:</strong> {motherName}</p>
+    <p class="mb-3 text-sm text-orange-700">{description}</p>
+  </div>
+</div>

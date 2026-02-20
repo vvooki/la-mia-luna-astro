@@ -1,0 +1,120 @@
+---
+// src/components/PedigreeTree.astro
+interface PedigreeNode {
+  name: string;
+  titles?: string;
+}
+
+interface Props {
+  dog: PedigreeNode;
+  parents?: {
+    father: PedigreeNode;
+    mother: PedigreeNode;
+  };
+  grandparents?: {
+    fatherSide: {
+      grandfather: PedigreeNode;
+      grandmother: PedigreeNode;
+    };
+    motherSide: {
+      grandfather: PedigreeNode;
+      grandmother: PedigreeNode;
+    };
+  };
+}
+
+const { dog, parents, grandparents } = Astro.props;
+---
+
+<div class="overflow-x-auto rounded-2xl bg-white p-6 shadow-lg">
+  <h4 class="mb-6 text-center text-xl font-semibold text-orange-900">Rodowód</h4>
+
+  <div class="flex min-w-max items-center justify-start gap-4">
+    {/* Generation 1 - Main Dog */}
+    <div class="flex min-w-[180px] items-center justify-center">
+      <div class="w-full rounded-xl bg-linear-to-br from-orange-200 to-rose-200 p-4 shadow-md">
+        <div class="font-medium text-orange-900">{dog.name}</div>
+        {dog.titles && <div class="mt-1 text-sm text-orange-700">{dog.titles}</div>}
+      </div>
+    </div>
+
+    {/* Connector Line */}
+    <div class="h-0.5 w-8 bg-orange-200"></div>
+
+    {/* Generation 2 - Parents */}
+    {
+      parents && (
+        <>
+          <div class="flex min-w-[180px] flex-col gap-4">
+            <div class="rounded-xl bg-orange-100 p-4 shadow-md">
+              <div class="mb-1 text-sm font-semibold text-orange-600">Ojciec</div>
+              <div class="text-orange-900">{parents.father.name}</div>
+              {parents.father.titles && (
+                <div class="mt-1 text-sm text-orange-700">{parents.father.titles}</div>
+              )}
+            </div>
+            <div class="rounded-xl bg-orange-100 p-4 shadow-md">
+              <div class="mb-1 text-sm font-semibold text-orange-600">Matka</div>
+              <div class="text-orange-900">{parents.mother.name}</div>
+              {parents.mother.titles && (
+                <div class="mt-1 text-sm text-orange-700">{parents.mother.titles}</div>
+              )}
+            </div>
+          </div>
+
+          {/* Generation 3 - Grandparents */}
+          {grandparents && (
+            <>
+              <div class="h-0.5 w-8 bg-orange-200" />
+              <div class="flex min-w-[200px] flex-col gap-2">
+                {/* Father's Side */}
+                <div class="rounded-lg bg-orange-50 p-3 shadow-sm">
+                  <div class="text-sm text-orange-900">
+                    {grandparents.fatherSide.grandfather.name}
+                  </div>
+                  {grandparents.fatherSide.grandfather.titles && (
+                    <div class="mt-1 text-xs text-orange-700">
+                      {grandparents.fatherSide.grandfather.titles}
+                    </div>
+                  )}
+                </div>
+                <div class="rounded-lg bg-orange-50 p-3 shadow-sm">
+                  <div class="text-sm text-orange-900">
+                    {grandparents.fatherSide.grandmother.name}
+                  </div>
+                  {grandparents.fatherSide.grandmother.titles && (
+                    <div class="mt-1 text-xs text-orange-700">
+                      {grandparents.fatherSide.grandmother.titles}
+                    </div>
+                  )}
+                </div>
+
+                {/* Mother's Side */}
+                <div class="mt-2 rounded-lg bg-orange-50 p-3 shadow-sm">
+                  <div class="text-sm text-orange-900">
+                    {grandparents.motherSide.grandfather.name}
+                  </div>
+                  {grandparents.motherSide.grandfather.titles && (
+                    <div class="mt-1 text-xs text-orange-700">
+                      {grandparents.motherSide.grandfather.titles}
+                    </div>
+                  )}
+                </div>
+                <div class="rounded-lg bg-orange-50 p-3 shadow-sm">
+                  <div class="text-sm text-orange-900">
+                    {grandparents.motherSide.grandmother.name}
+                  </div>
+                  {grandparents.motherSide.grandmother.titles && (
+                    <div class="mt-1 text-xs text-orange-700">
+                      {grandparents.motherSide.grandmother.titles}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+        </>
+      )
+    }
+  </div>
+</div>

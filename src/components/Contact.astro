@@ -1,0 +1,101 @@
+---
+import { Users, MapPin, Phone, Mail, Facebook } from "@lucide/astro";
+import HeadingTwo from "../components/typography/HeadingTwo.astro";
+import Paragraph from "../components/typography/Paragraph.astro";
+import HeadingOne from "../components/typography/HeadingOne.astro";
+---
+
+<section class="mt-16">
+    <div class="text-center mb-8 md:hidden">
+        <HeadingOne title="Skontaktuj się z nami" />
+        <Paragraph
+            text="Masz pytania o nasze psy, szczeniaki lub hodowlę? Chętnie odpowiemy i pomożemy!"
+            class="text-orange-800"
+        />
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+        {/* Contact Details */}
+        <div class="w-full h-full max-h-[680px]">
+            <img
+                src="/images/contact.webp"
+                alt="Contact"
+                class="w-full h-full object-cover rounded-4xl"
+            />
+        </div>
+        <div class="border-l-4 border-orange-900 pl-6">
+            <HeadingOne title="Skontaktuj się z nami" />
+            <Paragraph
+                text="Masz pytania o nasze psy, szczeniaki lub hodowlę? Chętnie odpowiemy i pomożemy!"
+                class="text-orange-800 mb-6"
+            />
+            <div class="space-y-6">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center"
+                        >
+                            <MapPin class="text-orange-900" size={20} />
+                        </div>
+                        <div>
+                            <p class="text-orange-900">Adres</p>
+                        </div>
+                    </div>
+                    <p class="text-orange-700 ml-13">
+                        Kamil Bukowski i Róża Walasek-Bukowska
+                    </p>
+                    <p class="text-orange-700 ml-13">ul. Dymna 15</p>
+                    <p class="text-orange-700 ml-13">86-005 Przyłęki</p>
+                    <p class="text-orange-700 ml-13">
+                        okolice Bydgoszczy, woj. kujawsko-pomorskie
+                    </p>
+                </div>
+
+                <a
+                    href="tel:514206744"
+                    class="flex items-center gap-3 rounded-lg hover:bg-orange-50 transition-colors group"
+                >
+                    <div
+                        class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors"
+                    >
+                        <Phone class="text-orange-900" size={20} />
+                    </div>
+                    <div>
+                        <p class="text-orange-900">Telefon</p>
+                        <p class="text-orange-700">514 206 744</p>
+                    </div>
+                </a>
+
+                <a
+                    href="mailto:bukowski_kamil@wp.pl"
+                    class="flex items-center gap-3 rounded-lg hover:bg-orange-50 transition-colors group"
+                >
+                    <div
+                        class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors"
+                    >
+                        <Mail class="text-orange-900" size={20} />
+                    </div>
+                    <div>
+                        <p class="text-orange-900">Email</p>
+                        <p class="text-orange-700">bukowski_kamil@wp.pl</p>
+                    </div>
+                </a>
+
+                <a
+                    href="https://www.facebook.com/p/La-Mia-Luna-FCI-Lagotto-Romagnolo-Kennel-100063973547476/"
+                    class="flex items-center gap-3 rounded-lg hover:bg-orange-50 transition-colors group"
+                >
+                    <div
+                        class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors"
+                    >
+                        <Facebook class="text-orange-900" size={20} />
+                    </div>
+                    <div>
+                        <p class="text-orange-900">Facebook</p>
+                        <p class="text-orange-700">La Mia Luna FCI</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

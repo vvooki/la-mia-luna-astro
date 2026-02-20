@@ -1,0 +1,23 @@
+---
+import { MarsIcon, VenusIcon } from 'lucide-react';
+
+interface Props {
+  variant: 'male' | 'female';
+}
+
+const { variant } = Astro.props;
+
+const variantClasses = {
+  male: 'bg-blue-200 text-blue-900',
+  female: 'bg-red-200 text-red-900',
+};
+---
+
+<span
+  class={`flex h-fit px-2 py-1 gap-1 rounded-xl font-medium text-xs ${variantClasses[variant]}`}
+>
+  <span aria-hidden="true"
+    >{variant === 'male' ? <MarsIcon size={14} /> : <VenusIcon size={14} />}</span
+  >
+  {variant === 'male' ? 'Pies' : 'Suka'}
+</span>

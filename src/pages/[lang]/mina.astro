@@ -1,0 +1,144 @@
+---
+import '../../styles/global.css';
+import ImageWithFallback from '../../components/ImageWithFallback.astro';
+import PedigreeTree from '../../components/PedigreeTree.astro';
+import OffspringCard from '../../components/OffspringCard.astro';
+import { Award, Heart, Medal, Smile } from '@lucide/astro';
+import Layout from '../../layouts/Layout.astro';
+import { CarouselOfCertificates } from '../../components/react/CarouselOfCertificates';
+import HeadingTwo from '@/components/typography/HeadingTwo.astro';
+import { CarouselOfImages } from '@/components/react/CarouselOfImages';
+import DogCard from '@/components/DogCard.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'pl' } }, { params: { lang: 'en' } }];
+}
+
+const mondayPedigree = {
+  dog: { name: 'Mina' },
+  parents: {
+    father: { name: 'Caro z Ustrońskiego Zakątka', titles: 'Champion Polski' },
+    mother: { name: 'Bella z Ustrońskiego Zakątka' },
+  },
+  grandparents: {
+    fatherSide: {
+      grandfather: { name: 'Rocky del Monte Bianco', titles: 'Int. Champion' },
+      grandmother: { name: 'Luna z Karkonoszy' },
+    },
+    motherSide: {
+      grandfather: { name: 'Bruno di Castel Vittorio' },
+      grandmother: { name: 'Aria z Beskidów' },
+    },
+  },
+};
+
+const offspring = [
+  {
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1647508354376-c6a331072165?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYWdvdHRvJTIwcm9tYWdub2xvJTIwcHVwcHl8ZW58MXx8fHwxNzYzOTIyMTI2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    fatherName: 'Caro z Ustrońskiego Zakątka',
+    motherName: 'Bella z Ustrońskiego Zakątka',
+  },
+  {
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1583675478703-04f728bf7d2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYWdvdHRvJTIwcm9tYWdub2xvJTIwZG9nfGVufDF8fHx8MTc2MzkyMjEyNnww&ixlib=rb-4.1.0&q=80&w=1080',
+    fatherName: 'Caro z Ustrońskiego Zakątka',
+    motherName: 'Bella z Ustrońskiego Zakątka',
+  },
+  {
+    birthDate: '15.03.2023',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit  amet mattis dolor, quis pharetra eros.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1706300386721-ba374c39fb0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYWdvdHRvJTIwcm9tYWdub2xvJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzYzOTIyMTI3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    fatherName: 'Caro z Ustrońskiego Zakątka',
+    motherName: 'Bella z Ustrońskiego Zakątka',
+  },
+];
+
+const certificates = [
+  {
+    title: 'Grand Champion Polski',
+    date: 'Czerwiec 2022',
+    description:
+      'Monday zdobył tytuł Młodzieżowego Championa Polski na Krajowej Wystawie Psów w Warszawie, prezentując doskonałą budowę i ruch.',
+    imageUrl: '/images/certificates/1.webp',
+  },
+  {
+    title: 'Międzynarodowy Champion Piękności C.I.B',
+    date: 'Wrzesień 2022',
+    description:
+      'Ocena Doskonała na Międzynarodowej Wystawie Psów w Krakowie. Monday zaprezentował świetną kondycję i temperament.',
+  },
+  {
+    title: 'Grand Champion Polski',
+    date: 'Czerwiec 2022',
+    description:
+      'Monday zdobył tytuł Młodzieżowego Championa Polski na Krajowej Wystawie Psów w Warszawie, prezentując doskonałą budowę i ruch.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1763543554827-5bcc5544e9a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb2clMjBzaG93JTIwY2VydGlmaWNhdGV8ZW58MXx8fHwxNzYzOTIyMTI2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+  },
+  {
+    title: 'Międzynarodowy Champion Piękności C.I.B',
+    date: 'Wrzesień 2022',
+    description:
+      'Ocena Doskonała na Międzynarodowej Wystawie Psów w Krakowie. Monday zaprezentował świetną kondycję i temperament.',
+  },
+];
+
+const images = [
+  {
+    imageUrl: '/images/mina/certificates/mina-1.webp',
+    alt: 'II Granaio Dei Malatesta Mina',
+  },
+  {
+    imageUrl: '/images/mina/certificates/mina-2.webp',
+    alt: 'II Granaio Dei Malatesta Mina',
+  },
+  {
+    imageUrl: '/images/mina/certificates/mina-3.webp',
+    alt: 'II Granaio Dei Malatesta Mina',
+  },
+];
+---
+
+<Layout title="La Mia Luna FCI - Hodowla Lagotto Romagnolo">
+  {/* Hero Section */}
+  <DogCard
+    name="II Granaio Dei Malatesta Mina"
+    image="/images/mina/mina-hero.webp"
+    description="Po dwóch latach z Monday postanowiliśmy znaleźć dla niego przyjaciółkę. Po długiej drodze trafiła do nas Mina, która jest Włoszką. Mina wniosła do naszej hodowli cenne włoskie linie krwi i niesamowity, radosny charakter."
+    characteristics="Cudowna i uśmiechnięta przez cały czas"
+    achievements="Grand Champion Polski, Międzynarodowy Champion Piękności C.I.B i wiele więcej..."
+  />
+
+  {/* Pedigree Section */}
+  <section class="mx-auto mb-16 max-w-6xl">
+    <PedigreeTree
+      dog={mondayPedigree.dog}
+      parents={mondayPedigree.parents}
+      grandparents={mondayPedigree.grandparents}
+    />
+  </section>
+
+  {/* Achievements Section */}
+  <section class="mx-auto mb-16 max-w-6xl text-center">
+    <HeadingTwo title="Osiągnięcia Wystawowe" />
+    <CarouselOfCertificates client:load certificates={certificates} />
+    <CarouselOfImages client:load images={images} />
+  </section>
+
+  {/* Offspring Section */}
+  <section class="mx-auto max-w-6xl text-center">
+    <HeadingTwo title="Potomstwo Monday'a" />
+    <div class="grid gap-6 md:grid-cols-3">
+      {offspring.map((pup) => <OffspringCard {...pup} />)}
+    </div>
+  </section>
+</Layout>

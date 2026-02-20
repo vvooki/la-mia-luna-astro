@@ -1,0 +1,122 @@
+---
+const pathname = Astro.url.pathname;
+
+const navigation = [
+  { name: 'Monday', path: '/pl/monday' },
+  { name: 'Mina', path: '/pl/mina' },
+  { name: 'Nasz Miot', path: '/pl/miot' },
+];
+
+const isActive = (path: string) => {
+  if (path === '/') return pathname === '/';
+  return pathname.startsWith(path);
+};
+---
+
+<header class="sticky top-0 z-50 border-b border-orange-100 bg-white/80 backdrop-blur-md">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      {/* Logo */}
+      <a href="/" class="group flex h-[55px] items-center gap-3 md:h-[70px]">
+        <img
+          src="/logo.svg"
+          class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+      </a>
+
+      {/* Desktop Navigation */}
+      <nav class="hidden items-center gap-6 md:flex">
+        {
+          navigation.map((item) => (
+            <a
+              href={item.path}
+              class:list={[
+                'rounded-lg px-3 py-2 font-medium transition-colors',
+                isActive(item.path)
+                  ? 'bg-orange-100 text-orange-900'
+                  : 'text-orange-700 hover:bg-orange-50',
+              ]}
+            >
+              {item.name}
+            </a>
+          ))
+        }
+      </nav>
+
+      {/* Mobile Menu Button */}
+      <button
+        id="mobile-menu-btn"
+        class="rounded-lg p-2 text-orange-900 transition-colors hover:bg-orange-50 md:hidden"
+        aria-label="Menu"
+      >
+        <svg
+          id="icon-menu"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"
+          ></line><line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+        <svg
+          id="icon-close"
+          class="hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 6 6 18"></path><path d="m6 6 18 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    {/* Mobile Navigation Panel */}
+    <nav
+      id="mobile-menu"
+      class="mt-4 hidden space-y-2 border-t border-orange-100/50 pt-4 pb-4 md:hidden"
+    >
+      {
+        navigation.map((item) => (
+          <a
+            href={item.path}
+            class:list={[
+              'block rounded-lg px-4 py-3 font-medium transition-colors',
+              isActive(item.path)
+                ? 'bg-orange-100 text-orange-900'
+                : 'text-orange-700 hover:bg-orange-50',
+            ]}
+          >
+            {item.name}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  if (menuBtn && mobileMenu && iconMenu && iconClose) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      iconMenu.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+  }
+</script>
