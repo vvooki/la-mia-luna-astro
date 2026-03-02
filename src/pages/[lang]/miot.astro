@@ -1,6 +1,8 @@
 ---
 import '../../styles/global.css';
 import PuppyCard from '@/components/PuppyCard.astro';
+import PuppyInterestCTA from '@/components/PuppyInterestCTA.astro';
+import HeadingTwo from '@/components/typography/HeadingTwo.astro';
 import Layout from '@/layouts/Layout.astro';
 
 export function getStaticPaths() {
@@ -66,13 +68,24 @@ const offspring: {
 ---
 
 <Layout title="La Mia Luna FCI - Miot">
-  <div class="flex w-full flex-wrap justify-center gap-4">
-    {
-      offspring.map((pup) => (
-        <div class="max-w-[300px]">
-          <PuppyCard {...pup} />
-        </div>
-      ))
-    }
-  </div>
+  <section class="mb-10">
+    <div class="mx-auto max-w-3xl text-center">
+      <HeadingTwo title="Nasz aktualny miot" />
+      <p class="mb-6 text-orange-800">
+        Z radością prezentujemy nasz najnowszy miot. Integer sit amet mattis dolor, quis pharetra
+        eros. Donec congue risus id urna facilisis, ac cursus.
+      </p>
+    </div>
+    <div class="flex w-full flex-wrap justify-center gap-4">
+      {
+        offspring.map((pup) => (
+          <div class="sm:max-w-[300px]">
+            <PuppyCard {...pup} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <PuppyInterestCTA variant="secondary" />
 </Layout>
